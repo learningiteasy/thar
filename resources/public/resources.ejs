@@ -1,0 +1,97 @@
+<%- extend('layouts/page') %>
+
+<section class="page-title o-hidden text-center parallaxie" data-overlay="7" data-bg-img="/uploads/<%= page_image %>">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12 ml-auto mr-auto">
+                <h1 class="title mb-0"><%= page_heading %></h1>
+                <br>
+                <% if(msg != ''){ %>
+                <div class="alert alert-danger">
+                    <%= msg %>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="page-content">
+    <section class="pb-17 sm-pb-8">
+        <div class="container">
+            <div class="row">
+
+                <% resources.forEach(function(resource){ %>
+
+             
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-classic">
+                        <div class="post">
+                            <div class="post-image">
+                                <img src="/uploads/<%= resource.banner %>" alt="" />
+                                <div class="post-date"><%= resource.created_at %></div>
+                            </div>
+                            <div class="post-desc">
+                                <div class="post-title">
+                                    <h5><%= resource.title %></h5>
+                                </div>
+                                <p><%= resource.content %></p>
+                            </div>
+                            <div class="post-bottom">
+                                <a class="post-btn" href="#" data-toggle="modal" data-target="#resourceModal<%= resource.id %>">Download<i class="ml-2 fas fa-long-arrow-alt-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Popup Modal -->
+
+                <div class="modal fade" id="resourceModal<%= resource.id %>" tabindex="-1" role="dialog" aria-labelledby="resourceModalLabel" aria-hidden="true" style="z-index: 9999;">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2 class="title mb-4">Please <span>Fill</span> to Download</h2>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="">
+
+                                    
+                                    <form method="post" id="resource_form<%= resource.id %>" action="/resources/postDownload">
+                                        <input type="hidden" name="resource_id" value="<%= resource.id %>">
+                                        <div class="messages"></div>
+                                        <div class="form-group has-error has-danger">
+                                            <input id="form_name" type="text" name="name" class="form-control" placeholder="Name" required="required"/>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input id="form_email" type="email" name="email" class="form-control" placeholder="Email" required="required"/>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Phone" required="required"/>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                        <div class="form-group">
+                                        <button data-id="<%= resource.id %>" class="btn btn-border btn-radius closeafter" style="float: right;"><span>Download Now</span></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+        
+
+
+                <%  }); %>
+
+
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+   <meta charset="utf-8">
+   <title>Admin - Tharprocess</title>
+
+   <link rel="apple-touch-icon" href="/static/theme/admin/images/ico/apple-icon-120.png">
+   <link rel="shortcut icon" type="image/x-icon" href="/static/theme/admin/images/ico/favicon.ico">
+   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
+
+
+    <!-- BEGIN: Vendor CSS-->
+   <link rel="stylesheet" type="text/css" href="/static/theme/admin/vendors/css/vendors.min.css">
+   <link rel="stylesheet" type="text/css" href="/static/theme/admin/vendors/css/extensions/tether-theme-arrows.css">
+   <link rel="stylesheet" type="text/css" href="/static/theme/admin/vendors/css/extensions/tether.min.css">
+   <link rel="stylesheet" type="text/css" href="/static/theme/admin/vendors/css/extensions/shepherd-theme-default.css">
+   <link rel="stylesheet" type="text/css" href="/static/theme/admin/vendors/css/extensions/toastr.css">
+  <link rel="stylesheet" type="text/css" href="/static/theme/admin/vendors/css/tables/datatable/datatables.min.css">
+   <!-- END: Vendor CSS-->
+
+   <!-- BEGIN: Theme CSS-->
+   <link rel="stylesheet" type="text/css" href="/static/theme/admin/css/bootstrap.css">
+   <link rel="stylesheet" type="text/css" href="/static/theme/admin/css/bootstrap-extended.css">
+   <link rel="stylesheet" type="text/css" href="/static/theme/admin/css/colors.css">
+   <link rel="stylesheet" type="text/css" href="/static/theme/admin/css/components.css">
+
+   <!-- BEGIN: Page CSS-->
+   <link rel="stylesheet" type="text/css" href="/static/theme/admin/css/core/menu/menu-types/vertical-menu.css">
+   <link rel="stylesheet" type="text/css" href="/static/theme/admin/css/core/colors/palette-gradient.css">
+  <link rel="stylesheet" type="text/css" href="/static/theme/admin/css/plugins/extensions/toastr.css">
+   <!-- END: Page CSS-->
+
+   <!-- BEGIN: Custom CSS-->
+   <link rel="stylesheet" type="text/css" href="/static/theme/admin/css/style.css">
+
+
+  </head>
+  <body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
+    <%- include('../partials/header') %>
+    <%- include('../partials/aside') %>
+    <%- content %>
+
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+
+    <%- include('../partials/footer') %>
+  </body>
+
+
+  <script src="/static/theme/admin/vendors/js/vendors.min.js"></script>
+  <script src="/static/theme/admin/vendors/js/extensions/toastr.min.js"></script>
+  <script src="/static/theme/admin/js/scripts/extensions/toastr.js"></script>
+  <!-- BEGIN Vendor JS-->
+
+  <!-- BEGIN: Page Vendor JS-->
+  <script src="/static/theme/admin/vendors/js/extensions/tether.min.js"></script>
+  <script src="/static/theme/admin/vendors/js/extensions/shepherd.min.js"></script>
+  <!-- END: Page Vendor JS-->
+
+
+   <script src="/static/theme/admin/vendors/js/tables/datatable/datatables.min.js"></script>
+   <script src="/static/theme/admin/vendors/js/tables/datatable/datatables.bootstrap4.min.js"></script>
+   <script src="/static/theme/admin/js/scripts/datatables/datatable.js"></script>
+
+  <!-- BEGIN: Theme JS-->
+  <script src="/static/theme/admin/js/core/app-menu.js"></script>
+  <script src="/static/theme/admin/js/core/app.js"></script>
+  <script src="/static/theme/admin/js/scripts/components.js"></script>
+  <!-- END: Theme JS-->
+
+  <!-- BEGIN: Page JS-->
+  <script src="/static/theme/admin/js/scripts/pages/dashboard-analytics.js"></script>
+
+  <script src="https://cdn.ckeditor.com/4.6.0/standard/ckeditor.js"></script>
+
+  <script>
+
+    CKEDITOR.config.allowedContent = true;
+    CKEDITOR.config.protectedSource.push(/<i[^>]*><\/i>/g);
+    CKEDITOR.config.filebrowserUploadUrl = '/admin/uploader';
+    CKEDITOR.replace( 'editor');
+
+  </script> 
+
+</html>

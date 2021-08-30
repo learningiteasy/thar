@@ -1,0 +1,86 @@
+<!-- 
+    Created On : 03/12/2020
+    Author     : Rajath Eynetech 
+-->
+
+<% extend('../layouts/default') %>
+<div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                      <h2 class="content-header-title float-left mb-0">User Downloads</h2>
+                      <div class="breadcrumb-wrapper col-12">
+                          <ol class="breadcrumb">
+                              <li class="breadcrumb-item"><a href="/admin">Home</a>
+                              </li>
+                              <li class="breadcrumb-item"><a href="/admin/user_downloads">User Downloads</a>
+                              </li>
+                              <li class="breadcrumb-item active"><a href="#">list</a>
+                              </li>
+                          </ol>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="content-body">
+
+            <section id="basic-datatable">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+
+                            <div class="card-content">
+                                <div class="card-body card-dashboard">
+                                    <div class="table-responsive">
+                                        <%- messages() %>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Downloaded</th>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>Phone</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                <% user_downloads.forEach(function(user_downloads){ %>
+                                                    <tr>
+                                                        <td><b><%= user_downloads.title %></b>
+                                                        </td>
+                                                        <td><%= user_downloads.name %></td>
+                                                        <td><%= user_downloads.email %></td>
+                                                        <td><%= user_downloads.phone %></td>
+                                                        <td>
+                                    
+                                                            <a href="/admin/user_downloads/destroy/<%= user_downloads.id %>" onclick="return confirm('Are you sure;');" class="btn btn-danger btn-sm"><i class="feather icon-trash"></i></a>
+                                                          </td>
+                                                         
+                                                    </tr>
+
+                                                <% }) %>
+
+                                              
+
+                                            </tbody>
+                                            
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--/ Zero configuration table -->
+
+        </div>
+    </div>
+</div>

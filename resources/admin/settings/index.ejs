@@ -1,0 +1,437 @@
+<% extend('../layouts/default') %>
+<div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header-title float-left mb-0">Appearance</h2>
+                        <div class="breadcrumb-wrapper col-12">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/admin">Home</a>
+                                </li>
+                                
+                                <li class="breadcrumb-item active">Settings
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
+                <div class="form-group breadcrum-right">
+                    <div class="dropdown">
+                        <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-settings"></i></button>
+                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Chat</a><a class="dropdown-item" href="#">Email</a><a class="dropdown-item" href="#">Calendar</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <!-- account setting page start -->
+            <section id="page-account-settings">
+                <div class="row">
+                    <!-- left menu section -->
+                    <div class="col-md-3 mb-2 mb-md-0">
+                        <ul class="nav nav-pills flex-column mt-md-0 mt-1">
+                            <li class="nav-item">
+                                <a class="nav-link d-flex py-75 active" id="account-pill-general" data-toggle="pill" href="#account-vertical-header" aria-expanded="true">
+                                    <i class="feather icon-list mr-50 font-medium-3"></i>
+                                    Header
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex py-75" id="account-pill-password" data-toggle="pill" href="#account-vertical-banner" aria-expanded="false">
+                                    <i class="feather icon-film mr-50 font-medium-3"></i>
+                                    Banner
+                                </a>
+                            </li>
+                           
+                            <li class="nav-item">
+                                <a class="nav-link d-flex py-75" id="account-pill-social" data-toggle="pill" href="#account-vertical-footer" aria-expanded="false">
+                                    <i class="feather icon-server mr-50 font-medium-3"></i>
+                                    Footer
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- right content section -->
+                    <div class="col-md-9">
+                        <div class="card">
+                           
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane active" id="account-vertical-header" aria-labelledby="account-pill-general" aria-expanded="true">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Logo</h4>
+                                            </div>
+                                            <div class="media">
+                                                
+                                                <a href="javascript: void(0);">
+                                                    <img src="/uploads/<%= Appearance.logo %>" class="rounded mr-75" alt="profile image" height="70" width="193">
+                                                </a>
+                                                <form method="POST" action="/admin/setting/upload_logo" enctype="multipart/form-data">
+                                                <div class="media-body mt-75 row">
+
+                                                    
+                                                    <div class="col-6 px-0 d-flex flex-sm-row flex-column justify-content-start">
+                                                        
+                                                            <fieldset class="form-group">
+                                                                
+                                                                <div class="custom-file">
+                                                                    <input type="file" name="logo" class="custom-file-input" id="inputGroupFile01">
+                                                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                                                </div>
+                                                            </fieldset>
+                                                           
+                                                    
+                                                    </div>
+                                                    <div class="col-6 px-0 d-flex flex-sm-row flex-column justify-content-start">
+                                                        <div class="form-group">
+                                                            <button type="submit" class="btn  btn-outline-warning ml-50">Upload</button>
+                                                        </div>
+                                                    </div>
+                                               
+                                                </div>
+                                            </form>
+                                            </div>
+                                            <hr>
+                                            
+                                        </div>
+                                        <div class="tab-pane fade " id="account-vertical-banner" role="tabpanel" aria-labelledby="account-pill-password" aria-expanded="false">
+                                            <form method="POST" action="/admin/setting/store_banner" enctype="multipart/form-data">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="controls">
+                                                                <div class="card">
+                                                
+                                                                    <div class="card-body"> <video width="100%" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+                                                                    <source src="/uploads/<%= Appearance.video_url %>" type="video/mp4" />
+                                                                </video>
+                                                                    </div>
+                                                                  </div>
+                                                               
+
+                                                                <label for="video_url">Video</label>
+                                                                <fieldset class="form-group">
+                                                                
+                                                                    <div class="custom-file">
+                                                                        <input type="file" name="video_url" class="custom-file-input" id="inputGroupFile01">
+                                                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                                                    </div>
+                                                                </fieldset>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="controls">
+                                                                <label for="video_url">Banner Caption 1</label>
+                                                                <input type="text"  class="form-control" value="<%= Appearance.banner_caption_1 %>" name="banner_caption_1" id="banner_caption_1" required placeholder="Enter Banner Caption 1">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="controls">
+                                                                <label for="video_url">Banner Caption 2</label>
+                                                                <input type="text"  class="form-control" value="<%= Appearance.banner_caption_2 %>" name="banner_caption_2" id="banner_caption_2" required placeholder="Enter Banner Caption 2">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="controls">
+                                                                <label for="video_url">Banner Caption 3</label>
+                                                                <input type="text"  class="form-control" value="<%= Appearance.banner_caption_3 %>" name="banner_caption_3" id="banner_caption_3" required placeholder="Enter Banner Caption 3">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="controls">
+                                                                <label for="video_url">Banner Caption 4</label>
+                                                                <input type="text"  class="form-control" value="<%= Appearance.banner_caption_4 %>" name="banner_caption_4" id="banner_caption_4" required placeholder="Enter Banner Caption 4">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12"><h4>Contact strip</h4></div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="controls">
+                                                                <label for="video_url">Email</label>
+                                                                <input type="text"  class="form-control" value="<%= Appearance.email %>" name="email" id="email" required placeholder="Enter Email">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="controls">
+                                                                <label for="video_url">Phone</label>
+                                                                <input type="text"  class="form-control" value="<%= Appearance.phone %>" name="phone" id="phone" required placeholder="Enter Phone">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12"><h4>Social Media Links</h4></div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="controls">
+                                                                <label for="video_url">Facebook</label>
+                                                                <input type="text"  class="form-control" value="<%= Appearance.facebook %>" name="facebook" id="facebook" required placeholder="Enter Facebook">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="controls">
+                                                                <label for="video_url">Instagram</label>
+                                                                <input type="text"  class="form-control" value="<%= Appearance.instagram %>" name="instagram" id="instagram" required placeholder="Enter Instagram">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="controls">
+                                                                <label for="video_url">Youtube</label>
+                                                                <input type="text"  class="form-control" value="<%= Appearance.youtube %>" name="youtube" id="youtube" required placeholder="Enter Youtube">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="controls">
+                                                                <label for="video_url">linkedin</label>
+                                                                <input type="text"  class="form-control" value="<%= Appearance.linkedin %>" name="linkedin" id="linkedin" required placeholder="Enter linkedin">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                   
+                                                    <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                                                        <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Save
+                                                            changes</button>
+                                                        <button type="reset" class="btn btn-outline-warning">Cancel</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        
+                                        <div class="tab-pane fade " id="account-vertical-footer" role="tabpanel" aria-labelledby="account-pill-social" aria-expanded="false">
+                                            <form method="POST" action="/admin/setting/store_footer">
+
+                                                <div class="row">
+                                                    <div class="col-12"><h4>About Tharprocess</h4></div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="account-twitter">Heading</label>
+                                                            <input type="text" value="<%= Appearance.about_heading %>"  id="about_heading" name="about_heading" class="form-control" placeholder="Enter About">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="account-twitter">Short Description</label>
+                                                            <input type="text" value="<%= Appearance.short_description %>" id="short_description" name="short_description" class="form-control" placeholder="Enter Short Description">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12"><h4>Our Solutions</h4></div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="account-twitter">Solution Heading</label>
+                                                            <input type="text" value="<%= Appearance.solution_heading %>" id="solution_heading" name="solution_heading" class="form-control" placeholder="Enter Solution Heading">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="account-twitter">Solution 1</label>
+                                                            <input type="text" value="<%= Appearance.solution_1 %>" id="solution_1" name="solution_1" class="form-control" placeholder="Enter Solution">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="account-twitter">Solution 1 Url</label>
+                                                            <input type="text" value="<%= Appearance.solution_1_url %>" id="solution_1_url" name="solution_1_url" class="form-control" placeholder="Enter Url">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="account-twitter">Solution 2</label>
+                                                            <input type="text" value="<%= Appearance.solution_2 %>" id="solution_2" name="solution_2" class="form-control" placeholder="Enter Solution">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="account-twitter">Solution 2 Url</label>
+                                                            <input type="text" value="<%= Appearance.solution_2_url %>" id="solution_2_url" name="solution_2_url" class="form-control" placeholder="Enter Url">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="account-twitter">Solution 3</label>
+                                                            <input type="text" value="<%= Appearance.solution_3 %>"  id="solution_3" name="solution_3" class="form-control" placeholder="Enter Solution">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="account-twitter">Solution 3 Url</label>
+                                                            <input type="text" value="<%= Appearance.solution_3_url %>" id="solution_3_url" name="solution_3_url" class="form-control" placeholder="Enter Url">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="account-twitter">Solution 4</label>
+                                                            <input type="text" id="solution_4" value="<%= Appearance.solution_4 %>" name="solution_4" class="form-control" placeholder="Enter Solution">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="account-twitter">Solution 4 Url</label>
+                                                            <input type="text" value="<%= Appearance.solution_4_url %>" id="solution_4_url" name="solution_4_url" class="form-control" placeholder="Enter Url">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="account-twitter">Solution 5</label>
+                                                            <input type="text" id="solution_5" value="<%= Appearance.solution_5 %>" name="solution_5" class="form-control" placeholder="Enter Solution">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="account-twitter">Solution 5 Url</label>
+                                                            <input type="text" value="<%= Appearance.solution_5_url %>" id="solution_5_url" name="solution_5_url" class="form-control" placeholder="Enter Url">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-12"><h4>Address</h4></div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="account-twitter">Address</label>
+                                                            <input type="text" id="address" value="<%= Appearance.address %>" name="address" class="form-control" placeholder="Enter Address">
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                                                        <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Save
+                                                            changes</button>
+                                                        <button type="reset" class="btn btn-outline-warning">Cancel</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="tab-pane fade" id="account-vertical-connections" role="tabpanel" aria-labelledby="account-pill-connections" aria-expanded="false">
+                                            <div class="row">
+                                                <div class="col-12 mb-3">
+                                                    <a href="javascript: void(0);" class="btn btn-info">Connect to
+                                                        <strong>Twitter</strong></a>
+                                                </div>
+                                                <div class="col-12 mb-3">
+                                                    <button class=" btn btn-sm btn-secondary float-right">edit</button>
+                                                    <h6>You are connected to facebook.</h6>
+                                                    <span>Johndoe@gmail.com</span>
+                                                </div>
+                                                <div class="col-12 mb-3">
+                                                    <a href="javascript: void(0);" class="btn btn-danger">Connect to
+                                                        <strong>Google</strong>
+                                                    </a>
+                                                </div>
+                                                <div class="col-12 mb-2">
+                                                    <button class=" btn btn-sm btn-secondary float-right">edit</button>
+                                                    <h6>You are connected to Instagram.</h6>
+                                                    <span>Johndoe@gmail.com</span>
+                                                </div>
+                                                <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                                                    <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Save
+                                                        changes</button>
+                                                    <button type="reset" class="btn btn-outline-warning">Cancel</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="account-vertical-notifications" role="tabpanel" aria-labelledby="account-pill-notifications" aria-expanded="false">
+                                            <div class="row">
+                                                <h6 class="m-1">Activity</h6>
+                                                <div class="col-12 mb-1">
+                                                    <div class="custom-control custom-switch custom-control-inline">
+                                                        <input type="checkbox" class="custom-control-input" checked id="accountSwitch1">
+                                                        <label class="custom-control-label mr-1" for="accountSwitch1"></label>
+                                                        <span class="switch-label w-100">Email me when someone comments
+                                                            onmy
+                                                            article</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 mb-1">
+                                                    <div class="custom-control custom-switch custom-control-inline">
+                                                        <input type="checkbox" class="custom-control-input" checked id="accountSwitch2">
+                                                        <label class="custom-control-label mr-1" for="accountSwitch2"></label>
+                                                        <span class="switch-label w-100">Email me when someone answers on
+                                                            my
+                                                            form</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 mb-1">
+                                                    <div class="custom-control custom-switch custom-control-inline">
+                                                        <input type="checkbox" class="custom-control-input" id="accountSwitch3">
+                                                        <label class="custom-control-label mr-1" for="accountSwitch3"></label>
+                                                        <span class="switch-label w-100">Email me hen someone follows
+                                                            me</span>
+                                                    </div>
+                                                </div>
+                                                <h6 class="m-1">Application</h6>
+                                                <div class="col-12 mb-1">
+                                                    <div class="custom-control custom-switch custom-control-inline">
+                                                        <input type="checkbox" class="custom-control-input" checked id="accountSwitch4">
+                                                        <label class="custom-control-label mr-1" for="accountSwitch4"></label>
+                                                        <span class="switch-label w-100">News and announcements</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 mb-1">
+                                                    <div class="custom-control custom-switch custom-control-inline">
+                                                        <input type="checkbox" class="custom-control-input" id="accountSwitch5">
+                                                        <label class="custom-control-label mr-1" for="accountSwitch5"></label>
+                                                        <span class="switch-label w-100">Weekly product updates</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 mb-1">
+                                                    <div class="custom-control custom-switch custom-control-inline">
+                                                        <input type="checkbox" class="custom-control-input" checked id="accountSwitch6">
+                                                        <label class="custom-control-label mr-1" for="accountSwitch6"></label>
+                                                        <span class="switch-label w-100">Weekly blog digest</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                                                    <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Save
+                                                        changes</button>
+                                                    <button type="reset" class="btn btn-outline-warning">Cancel</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- account setting page end -->
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,105 @@
+<!-- 
+    Created On : 16/11/2020
+    Author     : Rajath Eynetech 
+-->
+
+<% extend('../layouts/default') %>
+<div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                          <h2 class="content-header-title float-left mb-0">Menu</h2>
+                          <div class="breadcrumb-wrapper col-12">
+                              <ol class="breadcrumb">
+                                  <li class="breadcrumb-item"><a href="/admin">Home</a>
+                                  </li>
+                                  <li class="breadcrumb-item"><a href="/admin/menus">Menu</a>
+                                  </li>
+                                  <li class="breadcrumb-item active"><a href="#">list</a>
+                                  </li>
+                              </ol>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
+                    <div class="form-group breadcrum-right">
+                        <a href="/admin/menu/create" class="btn btn-success"> New Menu</a>
+                    </div>
+                </div>
+            </div>
+            <div class="content-body">
+
+                <section id="basic-datatable">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+
+                                <div class="card-content">
+                                    <div class="card-body card-dashboard">
+                                        <div class="table-responsive">
+                                          <%- messages() %>
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Url</th>
+                                                        <th>Status</th>
+                                                        <th>Created At</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                  <% menus.forEach(function(menu){ %>
+                                                    <tr>
+                                                        <td><b><%= menu.name %></b>
+                                                        </td>
+                                                        <td><%= menu.url %></td>
+                                                        <td><%= menu.status %></td>
+                                                        <td><%= menu.created_at %></td>
+                                                        <td>
+                                                          <a href="/admin/menu/edit/<%= menu.id %>" class="btn btn-info btn-sm"><i class="feather icon-edit"></i></a>
+                                                          <a href="/admin/menu/submenu/<%= menu.id %>" class="btn btn-primary btn-sm"><i class="feather icon-plus"></i></a>
+                                                          <a href="/admin/menu/destroy/<%= menu.id %>" onclick="return confirm('Are you sure;');" class="btn btn-danger btn-sm"><i class="feather icon-trash"></i></a>
+                                                        </td>
+                                                         
+                                                    </tr>
+
+                                                        <%  menu.sublime.forEach(function(submenu){ %>
+                                                        <tr>
+                                                            <td>--- <%= submenu.name %>
+                                                                
+                                                            </td>
+                                                            <td><%= submenu.url %></td>
+                                                            <td><%= submenu.status %></td>
+                                                            <td><%= submenu.created_at %></td>
+                                                            <td>
+                                                              <a href="/admin/menu/edit/<%= submenu.id %>" class="btn btn-info btn-sm"><i class="feather icon-edit"></i></a>
+                                                              <a href="/admin/menu/destroy/<%= submenu.id %>" onclick="return confirm('Are you sure;');" class="btn btn-danger btn-sm"><i class="feather icon-trash"></i></a>
+                                                            </td>
+                                                             
+                                                        </tr>
+                                                        <% }); %>
+
+                                                    <% }); %>
+
+                                                </tbody>
+                                                
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!--/ Zero configuration table -->
+
+            </div>
+        </div>
+    </div>

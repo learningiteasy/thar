@@ -1,0 +1,83 @@
+<%- extend('layouts/page') %>
+
+<section class="page-title o-hidden text-center parallaxie" data-overlay="7" data-bg-img="/uploads/<%= page_image %>">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12 ml-auto mr-auto">
+                <h1 class="title mb-0"><%= page_heading %></h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="contact-2">
+    <div class="container">
+        <div class="row pos-r">
+            <div class="col-lg-8 ml-auto">
+                <div class="contact-main">
+                    <h4 class="title mb-4">Contact Us</h4>
+                    
+
+                    <div id="messages">
+                    <% if(msg == 'success') { %>
+                      <ul class="success">
+                        <li>Thank you for your query will contact you shortly.</li>
+                      </ul>
+                    <% } %>
+
+                    <% if(msg == 'failed') { %>
+                      <ul class="danger">
+                        <li>Mail failed to connect.</li>
+                      </ul>
+                    <% } %>
+
+                    <% if(msg == 'recaptcha') { %>
+                      <ul class="danger">
+                        <li>Please fill Captcha</li>
+                      </ul>
+                    <% } %>
+
+                    </div>
+                    <form method="post" action="/contact/post_contact">
+                        <div class="messages"></div>
+                        <div class="form-group">
+                            <input id="form_name" type="text" name="name" class="form-control" placeholder="Name" required="required" data-error="Name is required." />
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input id="form_email" type="email" name="email" class="form-control" placeholder="Email" required="required" data-error="Valid email is required." />
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Phone" required="required" data-error="Phone is required" />
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="form_message" name="message" class="form-control" placeholder="Message" rows="4" required="required" data-error="Please,leave us a message."></textarea>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                         <div class="g-recaptcha" data-sitekey="6LfoT6waAAAAAPKnKE5KhQcxbB9_cL7xMjtNfmYO"></div><br>
+                        <button type="submit" class="btn btn-border btn-radius"><span>Submit</span></button>
+                    </form>
+                </div>
+            </div>
+            <div class="form-info theme-bg text-white">
+                <h4 class="title">Get In <span>Touch!</span></h4>
+                <p>
+                    <%= Appearance.short_description %>
+                </p>
+                <ul class="contact-info list-unstyled mt-4">
+                    <li class="mb-4">
+                        <i class="flaticon-paper-plane"></i><span>Address:</span>
+                        <p>
+                            <%= Appearance.address %>
+                        </p>
+                    </li>
+                    <li class="mb-4"><i class="flaticon-phone-call"></i><span>Phone:</span><a href="tel:<%= Appearance.phone %>"><%= Appearance.phone %></a></li>
+                    <li><i class="flaticon-message"></i><span>Email</span><a href="mailto:<%= Appearance.email %>"> <%= Appearance.email %></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

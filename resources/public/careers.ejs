@@ -1,0 +1,94 @@
+<%- extend('layouts/page') %>
+
+
+<section class="page-title o-hidden text-center parallaxie" data-overlay="7" data-bg-img="/uploads/<%= page_image %>">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12 ml-auto mr-auto">
+                <h1 class="title mb-0"><%= page_heading %></h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="page-content">
+    <section class="grey-bg">
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <div class="section-title mb-3">
+                        <h2 class="title">Current <span>Opportunities</span></h2>
+                        <h5><span>Look us up on Indeed for more information.</span></h5>
+                        <%- messages() %>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div id="BambooHR" style="width:100%;"><script src="https://tharprocess.bamboohr.com/js/jobs2.php" type="text/javascript"></script><div id="BambooHR-Footer">Powered by<a href="http://www.bamboohr.com" target="_blank" rel="noopener external nofollow noreferrer"><img src="https://resources.bamboohr.com/images/footer-logo.png" alt="BambooHR - HR software"/></a></div></div>
+            </div>
+            <div class="row">
+
+                <% careers.forEach(function(career){ %>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="widget-contact px-5 py-5 xs-px-2 xs-py-2 text-white border" data-bg-img="/static/theme/public/images/bg/01.jpg" data-overlay="8" style="background-image: url('/static/theme/public/images/bg/01.jpg');">
+                            <h4 class="text-white text-capitalize"><%= career.title %></h4>
+                            <p><%= career.content %></p>
+                            <a class="btn btn-theme btn-sm" data-toggle="modal" data-target="#exampleModal<%= career.id %>"><span>Apply now</span></a>
+                        </div>
+
+                        <!-- Popup Modal -->
+
+                        <div class="modal fade" id="exampleModal<%= career.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 9999;">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h2 class="title mb-4">Apply <span>Now</span></h2>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="contact-main">
+
+                                            
+                                            <form method="post" action="/careers/postCareer">
+                                                <input type="hidden" name="career_id" value="<%= career.id %>">
+                                                <div class="messages"></div>
+                                                <div class="form-group has-error has-danger">
+                                                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Name" required="required"/>
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input id="form_email" type="email" name="email" class="form-control" placeholder="Email" required="required"/>
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Phone" required="required"/>
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                                <div class="form-group">
+                                                <button class="btn btn-border btn-radius" style="float: right;"><span>Submit</span></button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                
+
+
+
+
+                    </div>
+                
+                <% }); %>
+
+            </div>
+        </div>
+    </section>
+</div>

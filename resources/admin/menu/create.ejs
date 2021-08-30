@@ -1,0 +1,123 @@
+<% extend('../layouts/default') %>
+<div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h2 class="content-header-title float-left mb-0">Menu</h2>
+                            <div class="breadcrumb-wrapper col-12">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/admin">Home</a>
+                                    </li>
+                                    <li class="breadcrumb-item"><a href="/admin/menus">Menu</a>
+                                    </li>
+                                    <li class="breadcrumb-item active"><a href="#">Create</a>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
+                    <div class="form-group breadcrum-right">
+
+                    </div>
+                </div>
+            </div>
+            <div class="content-body">
+                <!-- Basic Horizontal form layout section start -->
+                <section id="basic-horizontal-layouts">
+                    <div class="row match-height">
+
+
+                        <div class="col-md-12 col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Create new menu</h4>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body">
+                                      <ul id="validate_msg">
+                                      <% errors.forEach(function(error){  %>
+                                          <li rel="<%= error.msg %>"></li>
+                                        <% }); %>
+                                      </ul>
+                                        <form class="form form-horizontal" method="POST" action="/admin/menu/store">
+                                            <input type="hidden" name="parent_id" value="<%= parent_id %>">
+                                            <div class="form-body">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="form-group row">
+                                                            <div class="col-md-4">
+                                                                <span>Name</span>
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <div class="position-relative has-icon-left">
+                                                                    <input type="text" id="fname-icon" class="form-control" name="name" placeholder="Name">
+                                                                    <div class="form-control-position">
+                                                                        <i class="feather icon-menu"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-12">
+                                                        <div class="form-group row">
+                                                            <div class="col-md-4">
+                                                                <span>Url</span>
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <div class="position-relative has-icon-left">
+                                                                    <input type="text" id="fname-icon" class="form-control" name="url" placeholder="Url">
+                                                                    <div class="form-control-position">
+                                                                        <i class="feather icon-link"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group row">
+                                                            <div class="col-md-4">
+                                                                <span>Status</span>
+                                                            </div>
+                                                            <div class="col-md-8">
+
+
+                                                <fieldset class="form-group">
+                                                    <select name="status" class="form-control" id="basicSelect">
+                                                        <option value="1">Active</option>
+                                                        <option value="0">Inactive</option>
+
+                                                    </select>
+                                                </fieldset>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="col-md-8 offset-md-4">
+                                                        <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
+                                                        <button type="reset" class="btn btn-outline-warning mr-1 mb-1">Reset</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- // Basic Horizontal form layout section end -->
+
+
+            </div>
+        </div>
+    </div>

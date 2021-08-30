@@ -1,0 +1,89 @@
+<% extend('../layouts/default') %>
+<div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                          <h2 class="content-header-title float-left mb-0">User</h2>
+                          <div class="breadcrumb-wrapper col-12">
+                              <ol class="breadcrumb">
+                                  <li class="breadcrumb-item"><a href="/admin">Home</a>
+                                  </li>
+                                  <li class="breadcrumb-item"><a href="/admin/users">User</a>
+                                  </li>
+                                  <li class="breadcrumb-item active"><a href="#">list</a>
+                                  </li>
+                              </ol>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
+                    <div class="form-group breadcrum-right">
+                        <a href="/admin/user/create" class="btn btn-success"> New User</a>
+                    </div>
+                </div>
+            </div>
+            <div class="content-body">
+
+                <section id="basic-datatable">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+
+                                <div class="card-content">
+                                    <div class="card-body card-dashboard">
+                                        <div class="table-responsive">
+                                          <%- messages('message', locals) %>
+                                            <table class="table zero-configuration">
+                                                <thead>
+                                                    <tr>
+                                                        <th>User ID</th>
+                                                        <th>First Name</th>
+                                                        <th>Last Name</th>
+                                                        <th>Email</th>
+                                                        <th>Created At</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                  <% users.forEach(function(user){ %>
+                                                    <tr>
+                                                        <td><%= user.id %></td>
+                                                        <td><%= user.first_name %></td>
+                                                        <td><%= user.last_name %></td>
+                                                        <td><%= user.email %></td>
+                                                        <td><%= user.created_at %></td>
+                                                        <td>
+                                                          <a href="/admin/user/edit/<%= user.id %>" class="btn btn-info btn-sm"><i class="feather icon-edit"></i></a>
+                                                          <a href="/admin/destroy/edit/<%= user.id %>" onclick="return confirm('Are you sure;');" class="btn btn-danger btn-sm"><i class="feather icon-trash"></i></a></td>
+
+                                                    </tr>
+                                                    <% }); %>
+
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                      <th>First Name</th>
+                                                      <th>Last Name</th>
+                                                      <th>Email</th>
+                                                      <th>Created At</th>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!--/ Zero configuration table -->
+
+            </div>
+        </div>
+    </div>

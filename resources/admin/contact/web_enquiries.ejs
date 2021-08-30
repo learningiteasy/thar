@@ -1,0 +1,87 @@
+<!-- 
+    Created On : 03/12/2020
+    Author     : Rajath Eynetech 
+-->
+
+<% extend('../layouts/default') %>
+<div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                      <h2 class="content-header-title float-left mb-0">Web Enquiries</h2>
+                      <div class="breadcrumb-wrapper col-12">
+                          <ol class="breadcrumb">
+                              <li class="breadcrumb-item"><a href="/admin">Home</a>
+                              </li>
+                              <li class="breadcrumb-item"><a href="/admin/web_enquiries">Web Enquiry</a>
+                              </li>
+                              <li class="breadcrumb-item active"><a href="#">list</a>
+                              </li>
+                          </ol>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="content-body">
+
+            <section id="basic-datatable">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+
+                            <div class="card-content">
+                                <div class="card-body card-dashboard">
+                                    <div class="table-responsive">
+                                        <%- messages() %>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>Phone</th>
+                                                    <th>Message</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                <% web_enquiries.forEach(function(web_enquiry){ %>
+                                                    <tr>
+                                                    
+                                                        <td><%= web_enquiry.name %></td>
+                                                        <td><%= web_enquiry.email %></td>
+                                                        <td><%= web_enquiry.phone %></td>
+                                                        <td><%= web_enquiry.message %></td>
+                                                        <td>
+                                    
+                                                            <a href="/admin/web_enquiries/destroy/<%= web_enquiry.id %>" onclick="return confirm('Are you sure;');" class="btn btn-danger btn-sm"><i class="feather icon-trash"></i></a>
+                                                          </td>
+                                                         
+                                                    </tr>
+
+                                                <% }) %>
+
+                                              
+
+                                            </tbody>
+                                            
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--/ Zero configuration table -->
+
+        </div>
+    </div>
+</div>
